@@ -28,21 +28,15 @@
     (map-get? analyses analysis-id)
 )
 
-(define-read-only (get-analyses-for-simulation (simulation-id uint))
-    (fold check-and-add-analysis
-        (map-to-list analyses)
-        (list)
-        simulation-id)
-)
-
-(define-private (check-and-add-analysis (entry {id: uint, value: {simulation-id: uint, analyst: principal, results: (string-utf8 1000), created-at: uint}}) (acc (list 100 {id: uint, value: {simulation-id: uint, analyst: principal, results: (string-utf8 1000), created-at: uint}})) (target-sim-id uint))
-    (if (is-eq (get simulation-id (get value entry)) target-sim-id)
-        (unwrap-panic (as-max-len? (append acc entry) u100))
-        acc
-    )
-)
-
 (define-read-only (get-analysis-count)
     (var-get analysis-counter)
 )
 
+(define-read-only (get-analysis-for-simulation (simulation-id uint) (index uint))
+    (match (map-get? analyses index)
+        analysis (if (is-eq (get simulation-id analysis) simulation-id)
+                    (some analysis)
+                    none)
+        none
+    )
+)
