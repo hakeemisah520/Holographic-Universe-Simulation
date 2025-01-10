@@ -5,8 +5,23 @@ authors = []
 telemetry = true
 cache_dir = './.cache'
 requirements = []
+[contracts.data-analysis]
+path = 'contracts/data-analysis.clar'
+clarity_version = 2
+epoch = 2.5
+
+[contracts.quantum-algorithm-integration]
+path = 'contracts/quantum-algorithm-integration.clar'
+clarity_version = 2
+epoch = 2.5
+
 [contracts.simulation-management]
 path = 'contracts/simulation-management.clar'
+clarity_version = 2
+epoch = 2.5
+
+[contracts.theoretical-model-proposals]
+path = 'contracts/theoretical-model-proposals.clar'
 clarity_version = 2
 epoch = 2.5
 [repl.analysis]
