@@ -15,3 +15,5 @@ Y
 )tests/theoretical-model-proposals.test.ts,e/1/e1ea8bc36835c9698c579a1927bda497bebc05d0
 \
 ,contracts/quantum-algorithm-integration.clar,a/1/a183f73ae2ed976477d48c38386325ddc92febfe
+[
++tests/quantum-algorithm-integration.test.ts,7/4/74fcee7f5c3d15fd736205190dfcc7f13433eb74
