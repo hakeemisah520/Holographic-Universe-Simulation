@@ -9,3 +9,5 @@ L
 contracts/data-analysis.clar,2/0/204b0b7174eb82a6565355b25a888bf68fe9ad23
 K
 tests/data-analysis.test.ts,e/a/ea2642af3e9f88c8b8ede43fb57201c6ce0a1aa3
+Z
+*contracts/theoretical-model-proposals.clar,f/7/f72a30d9c000be956dd72d2043b3464d8a3f43ed
