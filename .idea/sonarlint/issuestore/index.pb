@@ -7,3 +7,5 @@ S
 #tests/simulation-management.test.ts,0/2/026adfeefe5f831407ef60fe62fffac7d5d9b84f
 L
 contracts/data-analysis.clar,2/0/204b0b7174eb82a6565355b25a888bf68fe9ad23
+K
+tests/data-analysis.test.ts,e/a/ea2642af3e9f88c8b8ede43fb57201c6ce0a1aa3

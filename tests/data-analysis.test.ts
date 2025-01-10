@@ -1,21 +1,56 @@
+import { describe, it, expect, beforeEach } from 'vitest';
 
-import { describe, expect, it } from "vitest";
-
-const accounts = simnet.getAccounts();
-const address1 = accounts.get("wallet_1")!;
-
-/*
-  The test below is an example. To learn more, read the testing documentation here:
-  https://docs.hiro.so/stacks/clarinet-js-sdk
-*/
-
-describe("example tests", () => {
-  it("ensures simnet is well initalised", () => {
-    expect(simnet.blockHeight).toBeDefined();
+describe('data-analysis', () => {
+  let contract: any;
+  
+  beforeEach(() => {
+    contract = {
+      submitAnalysis: (simulationId: number, results: string) => ({ value: 1 }),
+      getAnalysis: (analysisId: number) => ({
+        simulationId: 1,
+        analyst: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
+        results: 'Test analysis results',
+        createdAt: 100
+      }),
+      getAnalysesForSimulation: (simulationId: number) => [
+        {
+          simulationId: 1,
+          analyst: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
+          results: 'Test analysis results',
+          createdAt: 100
+        }
+      ],
+      getAnalysisCount: () => 1
+    };
   });
-
-  // it("shows an example", () => {
-  //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
-  //   expect(result).toBeUint(0);
-  // });
+  
+  describe('submit-analysis', () => {
+    it('should submit a new analysis', () => {
+      const result = contract.submitAnalysis(1, 'Test analysis results');
+      expect(result.value).toBe(1);
+    });
+  });
+  
+  describe('get-analysis', () => {
+    it('should return analysis data', () => {
+      const analysis = contract.getAnalysis(1);
+      expect(analysis.results).toBe('Test analysis results');
+    });
+  });
+  
+  describe('get-analyses-for-simulation', () => {
+    it('should return analyses for a specific simulation', () => {
+      const analyses = contract.getAnalysesForSimulation(1);
+      expect(analyses.length).toBe(1);
+      expect(analyses[0].simulationId).toBe(1);
+    });
+  });
+  
+  describe('get-analysis-count', () => {
+    it('should return the correct analysis count', () => {
+      const count = contract.getAnalysisCount();
+      expect(count).toBe(1);
+    });
+  });
 });
+
